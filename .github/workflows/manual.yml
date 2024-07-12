@@ -39,10 +39,4 @@ jobs:
         run: echo "Hello1 ${{ inputs.name }}! This is secrets2 - ${{ env.EXAMPLE1_MY_SECRETS }}"
 
       - name: Input AWS secrets3
-        run: echo "Hello1 ${{ inputs.name }}! This is secrets3 - ${{ env.EXAMPLE1_SECR }}"  
-
-      - name: Input AWS secrets4
-        run: export MY_VARIABLE=${{ env.EXAMPLE1_SECR }}
-
-      - name: Input AWS secrets5
-        run: echo $MY_VARIABLE
+        run: echo "Hello1 ${{ inputs.name }}! This is secrets3 - ${{ env.EXAMPLE1_SECR }}"
