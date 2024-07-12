@@ -29,7 +29,7 @@ jobs:
         uses: aws-actions/aws-secretsmanager-get-secrets@v2
         with:
           secret-ids: |
-            example1
+            EXAMPLE1
           parse-json-secrets: true
 
       - name: Input AWS secrets
