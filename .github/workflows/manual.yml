@@ -29,8 +29,8 @@ jobs:
         uses: aws-actions/aws-secretsmanager-get-secrets@v2
         with:
           secret-ids: |
-            YOUR_KEY
+            example1
           parse-json-secrets: true
 
       - name: Input AWS secrets
-        run: echo "Hello1 ${{ inputs.name }}! This is secrets - ${{ env.YOUR_KEY }}"
+        run: echo "Hello1 ${{ inputs.name }}! This is secrets - ${{ env.example1 }}"
