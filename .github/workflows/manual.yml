@@ -18,9 +18,19 @@ jobs:
   aws_job:
     runs-on: self-hosted
     steps:
-      - uses: aws-actions/aws-secretsmanager-get-secrets@v2 
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Get AWS secrets
+        uses: aws-actions/aws-secretsmanager-get-secrets@v1
         with:
           secret-ids: |
-            SECRET_NAME, arn:aws:secretsmanager:eu-north-1:728490037630:secret:example1-h2fm95
-      - name: AWS secrets
-        run: echo "Hello1 ${{ inputs.name }}! This is secrets - ${{ env.SECRET_NAME }}"
+            YOUR_KEY
+          parse-json-secrets: true
+
+      - name: Input AWS secrets
+        run: echo "Hello1 ${{ inputs.name }}! This is secrets - ${{ env.YOUR_KEY }}"
