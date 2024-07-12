@@ -15,9 +15,9 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  aws:
-    runs-on: ubuntu-latest
-
+  aws_job:
+    runs-on: self-hosted
     steps:
-    - name: AWS secrets
-      run: echo "Hello1 ${{ inputs.name }}"
+      - uses: aws-actions/aws-secretsmanager-get-secrets@v2 
+      - name: AWS secrets
+        run: echo "Hello1 ${{ inputs.name }}! This is secrets - ${{ secret-ids }}"
