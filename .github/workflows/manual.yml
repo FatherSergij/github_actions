@@ -20,4 +20,4 @@ jobs:
 
     steps:
     - name: AWS secrets
-      run: echo "Hello ${{ inputs.name }}"
+      run: echo "Hello1 ${{ inputs.name }}"
