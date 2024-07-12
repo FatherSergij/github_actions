@@ -26,7 +26,7 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Get AWS secrets
-        uses: aws-actions/aws-secretsmanager-get-secrets@v1
+        uses: aws-actions/aws-secretsmanager-get-secrets@v2
         with:
           secret-ids: |
             YOUR_KEY
