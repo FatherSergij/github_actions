@@ -21,7 +21,6 @@ jobs:
       - uses: aws-actions/aws-secretsmanager-get-secrets@v2 
         with:
           secret-ids: |
-            exampleSecretName
-            arn:aws:secretsmanager:eu-north-1:728490037630:secret:example1-h2fm95
+            SECRET_NAME, arn:aws:secretsmanager:eu-north-1:728490037630:secret:example1-h2fm95
       - name: AWS secrets
-        run: echo "Hello1 ${{ inputs.name }}! This is secrets - ${{ EXAMPLESECRETNAME }}"
+        run: echo "Hello1 ${{ inputs.name }}! This is secrets - ${{ env.SECRET_NAME }}"
