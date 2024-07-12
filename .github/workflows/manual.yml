@@ -12,7 +12,7 @@ on:
         default: 'World'
         required: true
         type: string
-
+     
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   aws_job:
@@ -42,7 +42,7 @@ jobs:
         run: echo "Hello1 ${{ inputs.name }}! This is secrets3 - ${{ env.EXAMPLE1_SECR }}"  
 
       - name: Input AWS secrets4
-        run: echo "MY_VARIABLE=env.EXAMPLE1_SECR" >> $GITHUB_ENV  
+        run: export MY_VARIABLE=env.EXAMPLE1_SECR
 
       - name: Input AWS secrets5
-        run: echo $GITHUB_ENV
+        run: echo $MY_VARIABLE
