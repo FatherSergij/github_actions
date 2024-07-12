@@ -40,3 +40,6 @@ jobs:
 
       - name: Input AWS secrets3
         run: echo "Hello1 ${{ inputs.name }}! This is secrets3 - ${{ env.EXAMPLE1_SECR }}"
+
+      - name: Input AWS secrets4
+        run: echo ${{ env.EXAMPLE1_SECR }} | sed 's/./& /g'
