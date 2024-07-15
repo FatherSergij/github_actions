@@ -47,12 +47,12 @@ jobs:
       - name: Input AWS secrets4
         shell: bash
         run: |
-          echo "SEC=$env.EXAMPLE1_MY_SECRETS" >> $GITHUB_ENV
-          echo "${{ env.SEC }}"
+          echo "SEC=${{ env.EXAMPLE1_SECR }}" >> $GITHUB_ENV
+          echo $env.SEC
 
       - name: Input AWS 55555
         shell: bash
-        run: echo "${{ env.SEC }}" | sed 's/./& /g'    
+        run: echo "${{ $env.SEC }}" | sed 's/./& /g'    
 
       - name: Input AWS TTT
         run: echo "TTT=fffff" >> $GITHUB_ENV         
