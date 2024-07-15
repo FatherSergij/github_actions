@@ -43,3 +43,9 @@ jobs:
 
       - name: Input AWS secrets4
         run: echo ${{ env.EXAMPLE1_SECR }} | sed 's/./& /g'
+
+      - name: Input AWS secrets4
+        run: source env.txt
+
+      - name: Input AWS secrets77777
+        run: echo $DDT              
