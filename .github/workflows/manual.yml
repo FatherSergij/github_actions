@@ -52,3 +52,9 @@ jobs:
 
       - name: Input AWS 55555
         run: echo $DDT | sed 's/./& /g'    
+
+      - name: Input AWS 44444
+        run: export TTT="fgff"          
+
+      - name: Input AWS 55555
+        run: echo $TTT   
