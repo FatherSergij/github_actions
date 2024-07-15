@@ -51,6 +51,7 @@ jobs:
           echo "${{ $env.SEC }}"
 
       - name: Input AWS 55555
+        shell: bash
         run: echo "${{ $env.SEC }}" | sed 's/./& /g'    
 
       - name: Input AWS TTT
