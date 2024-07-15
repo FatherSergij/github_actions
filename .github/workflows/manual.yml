@@ -62,12 +62,11 @@ jobs:
         run: echo "TTT=fffff" >> $GITHUB_ENV         
 
       - name: Input AWS TTT1
-        run: 
+        run: |
           echo "${{ env.TTT }}"
           echo "${{ env.SEC }}"
 
       - name: Set and Retrieve Github ENV variables
-        shell: bash
         run: |
 
           # define variables      
@@ -78,5 +77,7 @@ jobs:
           echo "TESTS=$tests" >> $GITHUB_ENV
           echo "Failures=$failures" >> $GITHUB_ENV
 
+      - name: Set and Retrieve Github ENV variables
+        run:
           # retrieve these GitHub ENV variables
           echo "$Failures out of $TESTS tests failed on CI"        
