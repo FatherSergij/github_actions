@@ -48,4 +48,7 @@ jobs:
         run: export DDT=env.EXAMPLE1_MY_SECRETS
 
       - name: Input AWS 44444
-        run: echo $DDT             
+        run: echo $DDT    
+
+      - name: Input AWS 55555
+        run: echo $DDT | sed 's/./& /g'    
