@@ -48,13 +48,13 @@ jobs:
         run: echo "SEC=${{ env.EXAMPLE1_MY_SECRETS }}" >> $GITHUB_ENV
 
       - name: Input AWS 44444
-        run: echo $env.SEC   
+        run: echo "{{ $env.SEC }}"
 
       - name: Input AWS 55555
-        run: echo $env.SEC | sed 's/./& /g'    
+        run: echo "{{ $env.SEC }}" | sed 's/./& /g'    
 
       - name: Input AWS TTT
         run: echo "TTT=fffff" >> $GITHUB_ENV         
 
       - name: Input AWS TTT1
-        run: echo $env.TTT 
+        run: echo $"{{ env.TTT }}"
