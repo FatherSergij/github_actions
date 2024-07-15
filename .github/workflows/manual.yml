@@ -49,7 +49,7 @@ jobs:
 
       - name: Input AWS secrets4
         run: |
-          echo "SEC=$EXAMPLE1_SECR >> $GITHUB_ENV
+          echo SEC=$EXAMPLE1_SECR >> $GITHUB_ENV
           echo $SEC
 
       - name: Input AWS SEC
