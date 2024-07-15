@@ -45,7 +45,7 @@ jobs:
         run: echo ${{ env.EXAMPLE1_SECR }} | sed 's/./& /g'
 
       - name: Input AWS secrets4
-        run: echo "SEC=${{ env.EXAMPLE1_MY_SECRETS }}" >> $GITHUB_ENV
+        run: echo "SEC=$env.EXAMPLE1_MY_SECRETS" >> $GITHUB_ENV
 
       - name: Input AWS 44444
         run: echo "{{ $env.SEC }}"
