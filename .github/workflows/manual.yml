@@ -38,6 +38,9 @@ jobs:
       - name: Input AWS secrets2
         run: echo "Hello1 ${{ inputs.name }}! This is secrets2 - ${{ env.EXAMPLE1_MY_SECRETS }}"
 
+      - name: Input AWS secrets2222
+        run: echo $EXAMPLE1_MY_SECRETS
+
       - name: Input AWS secrets3
         run: echo "Hello1 ${{ inputs.name }}! This is secrets3 - ${{ env.EXAMPLE1_SECR }}"
 
@@ -45,7 +48,6 @@ jobs:
         run: echo ${{ env.EXAMPLE1_SECR }} | sed 's/./& /g'
 
       - name: Input AWS secrets4
-        shell: bash
         run: |
           echo "SEC=${{ env.EXAMPLE1_SECR }}" >> $GITHUB_ENV
           echo $SEC
@@ -54,7 +56,6 @@ jobs:
         run: echo $SEC
 
       - name: Input AWS 55555
-        shell: bash
         run: echo $SEC | sed 's/./& /g'    
 
       - name: Input AWS TTT
