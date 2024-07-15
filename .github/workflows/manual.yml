@@ -28,8 +28,10 @@ jobs:
       - name: Get AWS secrets
         uses: aws-actions/aws-secretsmanager-get-secrets@v2
         with:
-          secret-ids: |
-            example1
+          #secret-ids: |
+          secrets:
+            #example1
+            my_secrets
           parse-json-secrets: true
 
       - name: Input AWS secrets
@@ -44,8 +46,8 @@ jobs:
       - name: Input AWS secrets4
         run: echo ${{ env.EXAMPLE1_SECR }} | sed 's/./& /g'
 
-      - name: Input AWS secrets4
-        run: source env.txt
+      # - name: Input AWS secrets4
+      #   run: source env.txt
 
-      - name: Input AWS secrets77777
-        run: echo $DDT              
+      - name: Input AWS 44444
+        run: echo "${{ MY_SECRETS }}"             
