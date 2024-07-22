@@ -40,7 +40,7 @@ jobs:
         run: echo "Hello1 ${{ inputs.name }}! This is secrets2 - ${{ env.EXAMPLE1_MY_SECRETS }}"
 
       - name: Input AWS secrets2222
-        run: echo $EXAMPLE1_MY_SECRETS
+        run: echo $EXAMPLE1_MY_SECRETS #it doesn't matter you use EXAMPLE1_MY_SECRETS with env or without one
 
       - name: Input AWS secrets3
         run: echo "Hello1 ${{ inputs.name }}! This is secrets3 - ${{ env.EXAMPLE1_SECR }}"
