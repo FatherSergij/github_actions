@@ -28,6 +28,7 @@ jobs:
       - name: Get AWS secrets
         uses: aws-actions/aws-secretsmanager-get-secrets@v2
         with:
+          #Name of secret(AWS Secrets Manager)
           secret-ids: |
             example1
           parse-json-secrets: true
@@ -46,10 +47,13 @@ jobs:
 
       - name: Input AWS secrets4
         #run: echo ${{ env.EXAMPLE1_SECR }} | sed 's/./& /g'
-        run: echo $EXAMPLE1_SECR | sed 's/./& /g'
+        run: echo $EXAMPLE1_SECR | sed 's/./& /g' #From value of secret is cut out the space between the letters
+                                                  #without sed the space is between the letters for some reason
 
       - name: Input AWS secrets4
         run: |
+
+          #SECR - key of secret(it doesn't matter what you use uppercase or lowercase in AWS )
           echo SEC=$EXAMPLE1_SECR >> $GITHUB_ENV
           echo $SEC
 
