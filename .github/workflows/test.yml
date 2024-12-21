@@ -1,0 +1,89 @@
+# This is a basic workflow that is manually triggered
+
+name: Manual workflow
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Person to greet'
+        default: 'World'
+        required: true
+        type: string
+     
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  aws_job:
+    runs-on: self-hosted
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          #Everything is inputed in GitHub->your repository->Settings->Secrets and variables->Actions
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Get AWS secrets
+        uses: aws-actions/aws-secretsmanager-get-secrets@v2
+        with:
+          #Name of secret(AWS Secrets Manager)
+          secret-ids: |
+            example1
+          parse-json-secrets: true
+
+      - name: Input AWS secrets
+        run: echo "Hello1 ${{ inputs.name }}! This is secrets - ${{ env.EXAMPLE1 }}"
+
+      - name: Input AWS secrets2
+        run: echo "Hello1 ${{ inputs.name }}! This is secrets2 - ${{ env.EXAMPLE1_MY_SECRETS }}"
+
+      - name: Input AWS secrets2222
+        run: echo $EXAMPLE1_MY_SECRETS #it doesn't matter you use EXAMPLE1_MY_SECRETS with env or without one
+
+      - name: Input AWS secrets3
+        run: echo "Hello1 ${{ inputs.name }}! This is secrets3 - ${{ env.EXAMPLE1_SECR }}"
+
+      - name: Input AWS secrets4
+        #run: echo ${{ env.EXAMPLE1_SECR }} | sed 's/./& /g'
+        run: echo $EXAMPLE1_SECR | sed 's/./& /g' #From value of secret is cut out the space between the letters
+                                                  #without sed the space is between the letters for some reason
+
+      - name: Input AWS secrets4
+        run: |
+
+          #SECR - key of secret(it doesn't matter what you use uppercase or lowercase in AWS )
+          echo SEC=$EXAMPLE1_SECR >> $GITHUB_ENV
+          echo $SEC
+
+      - name: Input AWS SEC
+        run: echo $SEC
+
+      - name: Input AWS 55555
+        run: echo $SEC | sed 's/./& /g'    
+
+      - name: Input AWS TTT
+        run: echo "TTT=fffff" >> $GITHUB_ENV         
+
+      - name: Input AWS TTT1
+        run: |
+          echo "${{ env.TTT }}"
+          echo "${{ env.SEC }}"
+
+      - name: Set and Retrieve Github ENV variables
+        run: |
+
+          # define variables      
+          tests=16
+          failures=2
+
+          # set them as GitHub ENV variables
+          echo "TESTS=$tests" >> $GITHUB_ENV
+          echo "Failures=$failures" >> $GITHUB_ENV
+
+      - name: Set and Retrieve Github ENV variables
+        run:
+          # retrieve these GitHub ENV variables
+          echo "$Failures out of $TESTS tests failed on 
