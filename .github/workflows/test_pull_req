@@ -6,6 +6,8 @@ name: Manual workflow test
 # or API.
 on:
   pull_request:
+    branches:
+      - pullrequest
   workflow_dispatch:
     inputs:
       name:
