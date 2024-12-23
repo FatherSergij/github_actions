@@ -1,15 +1,18 @@
 # This is a basic workflow that is manually triggered
 
-name: Manual workflow 444
+name: Manual workflow PR
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
 on:
+  pull_request:
+    branches:
+      - pullrequest
   workflow_dispatch:
     inputs:
       name:
         description: 'Person to greet'
-        default: 'Hello'
+        default: 'World'
         required: true
         type: string
      
@@ -86,4 +89,4 @@ jobs:
       - name: Set and Retrieve Github ENV variables
         run:
           # retrieve these GitHub ENV variables
-          echo "$Failures out of $TESTS tests failed on CI"        
+          echo "$Failures out of $TESTS tests failed on 
