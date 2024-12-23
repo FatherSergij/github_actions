@@ -10,6 +10,15 @@ on:
       - test
   workflow_dispatch:
     inputs:
+      requesttype:
+        type: choice
+        required: true
+        description: Request Type
+        options:
+            - Create (with New RG)
+            - Create (with Existing RG)
+            - Remove
+        default: "Create (with New RG)"    
       name:
         description: 'Person to greet'
         default: 'World'
