@@ -8,6 +8,7 @@ on:
   pull_request:
     branches:
       - main
+      - pullrequest
   workflow_dispatch:
     inputs:
       name:
