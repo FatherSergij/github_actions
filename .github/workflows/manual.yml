@@ -9,7 +9,7 @@ on:
     inputs:
       name:
         description: 'Person to greet'
-        default: 'World'
+        default: 'Hello'
         required: true
         type: string
      
